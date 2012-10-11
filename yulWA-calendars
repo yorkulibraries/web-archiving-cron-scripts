@@ -1,0 +1,8 @@
+#!/bin/bash
+# Bash script that archives selected York University web sites using the WARC ISO format.
+
+cd /media/DIY/DIY/warc-testing
+wget --mirror --warc-file=YU_Calendars_$(date +\%Y_\%m_\%d) http://calendars.registrar.yorku.ca
+zip -r YU_Calendars_$(date +\%Y_\%m_\%d).zip calendars.registrar.yorku.ca YU_Calendars_$(date +\%Y_\%m_\%d).warc.gz
+rm -rf calendars.registrar.yorku.ca
+rm YU_Calendars_$(date +\%Y_\%m_\%d).warc.gz
