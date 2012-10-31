@@ -1,7 +1,6 @@
 #!/bin/sh
 # Bash script that archives selected York University web sites using the WARC ISO format.
 
-#cd /home/nruest/tmp/warc-testing
 cd /home/nruest/tmp/warcs
 mkdir YFILE_$(date +\%Y_\%m_\%d)
 cd YFILE_$(date +\%Y_\%m_\%d)
