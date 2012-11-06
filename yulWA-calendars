@@ -2,12 +2,13 @@
 # Bash script that archives selected York University web sites using the WARC ISO format.
 
 DATE=`date +"%Y_%m_%d"`
+
 cd /home/nruest/tmp/warcs
 mkdir YU_Calendars_$DATE
 cd YU_Calendars_$DATE
 wget --mirror --warc-file=YU_Calendars_$DATE --wait=3 http://calendars.registrar.yorku.ca
 cd ..
-bagit.py --processes 4 --contact-name 'Nick Ruest' --external-description 'York University Calendars (Office of the Registrar) web archive' YU_Calendars_$DATE
+/usr/local/bin/bagit.py --processes 4 --contact-name 'Nick Ruest' --external-description 'York University Calendars (Office of the Registrar) web archive' YU_Calendars_$DATE
 zip -r YU_Calendars_$DATE.zip YU_Calendars_$DATE
 rm -rf YU_Calendars_$DATE
 echo "S'up Dawg? I archived yo calendar site: $(date)" >> /home/nruest/tmp/webarchiving.log
