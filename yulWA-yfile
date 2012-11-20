@@ -2,11 +2,12 @@
 # Bash script that archives selected York University web sites using the WARC ISO format.
 
 DATE=`date +"%Y_%m_%d"`
+source /home/nruest/.zshrc
 
 cd /home/nruest/tmp/warcs
 mkdir YFILE_$DATE
 cd YFILE_$DATE
-/usr/local/bin/wget --mirror --warc-file=YFILE_$DATE --wait=3 http://yfile.news.yorku.ca/
+/usr/local/bin/wget --mirror --convert-links --warc-file=YFILE_$DATE --wait=3 http://yfile.news.yorku.ca/
 cd ..
 /usr/local/bin/bagit.py --processes 4 --contact-name 'Nick Ruest' --external-description 'YFile daily web archive' YFILE_$DATE
 zip -r YFILE_$DATE.zip YFILE_$DATE
