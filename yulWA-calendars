@@ -1,15 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 # Bash script that archives selected York University web sites using the WARC ISO format.
-
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 DATE=`date +"%Y_%m_%d"`
-source /home/nruest/.zshrc
 
-cd /home/nruest/tmp/warcs
+cd /mnt/warcs
 mkdir YU_Calendars_$DATE
 cd YU_Calendars_$DATE
 /usr/local/bin/wget --mirror --convert-links --warc-file=YU_Calendars_$DATE --wait=3 http://calendars.registrar.yorku.ca
 cd ..
-/usr/local/bin/bagit.py --processes 4 --contact-name 'Nick Ruest' --external-description 'York University Calendars (Office of the Registrar) web archive' YU_Calendars_$DATE
+/usr/bin/python /usr/local/bin/bagit.py --processes 4 --contact-name 'Nick Ruest' --contact-email 'ruestn@yorku.ca' --source-organization 'York University' --organization-address '4700 Keele Street Toronto, Ontario M3J 1P3 Canada' --contact-phone '+1 (416)736-2100 x 33235' --external-description 'York University Calendars (Office of the Registrar) web archive' YU_Calendars_$DATE
 zip -r YU_Calendars_$DATE.zip YU_Calendars_$DATE
 rm -rf YU_Calendars_$DATE
-echo "S'up Dawg? I archived yo calendar site: $(date)" >> /home/nruest/tmp/webarchiving.log
+echo "S'up Dawg? I archived yo calendar site: $(date)" >> /var/log/webarchiving.log
