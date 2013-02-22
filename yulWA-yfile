@@ -6,7 +6,8 @@ DATE=`date +"%Y_%m_%d"`
 cd /mnt/warcs
 mkdir YFILE_$DATE
 cd YFILE_$DATE
-/usr/local/bin/wget --mirror --convert-links --warc-file=YFILE_$DATE --no-warc-compression --wait=3 http://yfile.news.yorku.ca/
+/usr/local/bin/wget --mirror --convert-links --page-requisites --warc-file=YFILE_$DATE --no-warc-compression --wait=3 http://yfile.news.yorku.ca/
+cp YFILE_$DATE.warc /home/nruest/tmp/warcs
 cd ..
 /usr/bin/python /usr/local/bin/bagit.py --processes 4 --contact-name 'Nick Ruest' --contact-email 'ruestn@yorku.ca' --source-organization 'York University' --organization-address '4700 Keele Street Toronto, Ontario M3J 1P3 Canada' --contact-phone '+1 (416)736-2100 x 33235' --external-description 'YFile daily web archive' YFILE_$DATE
 zip -r YFILE_$DATE.zip YFILE_$DATE
