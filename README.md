@@ -6,6 +6,13 @@ This is a collection of shell scripts to archive York University websites using 
 
 You have to start somewhere ;)
 
+### Requirements
+
+* wkhtmltopdf `sudo apt-get instll wkhtmltopdf`
+* [wkhtmltoimage](http://code.google.com/p/wkhtmltopdf/downloads/detail?name=wkhtmltoimage-0.11.0_rc1-static-amd64.tar.bz2&can=2&q=) (put in path)
+* pngcrush `sudo apt-get install pngcrush`
+* [wget](http://savannah.gnu.org/forum/forum.php?forum_id=7323) (>1.14)
+
 ### Installation
 
 Clone the repository, and put the shell scripts in a path that cron can execute
@@ -24,3 +31,9 @@ Ex:
 ### License
 
 Public Domain
+
+![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png "CC0")
+
+### Thanks
+
+[Peter Binkley](http://github.com/pbinkley)

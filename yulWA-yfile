@@ -6,6 +6,11 @@ DATE=`date +"%Y_%m_%d"`
 cd /mnt/warcs
 mkdir YFILE_$DATE
 cd YFILE_$DATE
+
+xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltopdf --use-xserver --dpi 200  --page-size Letter http://yfile.news.yorku.ca/ YFILE_$DATE.pdf
+xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver http://yfile.news.yorku.ca/ temp.png
+pngcrush temp.png YFILE_$DATE.png
+rm temp.png
 /usr/local/bin/wget --mirror --convert-links --page-requisites --warc-file=YFILE_$DATE --no-warc-compression --wait=3 http://yfile.news.yorku.ca/
 cp YFILE_$DATE.warc /home/nruest/tmp/warcs
 cd ..
