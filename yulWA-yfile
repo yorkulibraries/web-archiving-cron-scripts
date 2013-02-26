@@ -3,7 +3,7 @@
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 DATE=`date +"%Y_%m_%d"`
 
-cd /mnt/warcs
+cd /mnt/diy/DIY/web-archiving/warc
 mkdir YFILE_$DATE
 cd YFILE_$DATE
 
@@ -12,7 +12,7 @@ xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver http://yfile
 pngcrush temp.png YFILE_$DATE.png
 rm temp.png
 /usr/local/bin/wget --page-requisites --warc-file=YFILE_$DATE --wait=3 http://yfile.news.yorku.ca/
-cp YFILE_$DATE.warc.gz /home/nruest/tmp/warcs
+cp YFILE_$DATE.warc.gz /mnt/diy/DIY/web-archiving/wayback
 cd ..
 /usr/bin/python /usr/local/bin/bagit.py --processes 4 --contact-name 'Nick Ruest' --contact-email 'ruestn@yorku.ca' --source-organization 'York University' --organization-address '4700 Keele Street Toronto, Ontario M3J 1P3 Canada' --contact-phone '+1 (416)736-2100 x 33235' --external-description 'YFile daily web archive' YFILE_$DATE
 zip -r YFILE_$DATE.zip YFILE_$DATE
