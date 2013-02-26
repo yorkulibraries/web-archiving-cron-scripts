@@ -11,7 +11,7 @@ xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltopdf --use-xserver --dpi 200  --p
 xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver http://yfile.news.yorku.ca/ temp.png
 pngcrush temp.png YFILE_$DATE.png
 rm temp.png
-/usr/local/bin/wget --mirror --page-requisites --warc-file=YU_Calendars_$DATE --no-warc-compression --wait=3 http://calendars.registrar.yorku.ca
+/usr/local/bin/wget --page-requisites --warc-file=YU_Calendars_$DATE --no-warc-compression --wait=3 http://calendars.registrar.yorku.ca
 cp YU_Calendars_$DATE.warc /home/nruest/tmp/warcs
 cd ..
 /usr/bin/python /usr/local/bin/bagit.py --processes 4 --contact-name 'Nick Ruest' --contact-email 'ruestn@yorku.ca' --source-organization 'York University' --organization-address '4700 Keele Street Toronto, Ontario M3J 1P3 Canada' --contact-phone '+1 (416)736-2100 x 33235' --external-description 'York University Calendars (Office of the Registrar) web archive' YU_Calendars_$DATE
