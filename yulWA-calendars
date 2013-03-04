@@ -7,9 +7,9 @@ cd /mnt/diy/DIY/web-archiving/warc
 mkdir YU_Calendars_$DATE
 cd YU_Calendars_$DATE
 
-xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltopdf --use-xserver --dpi 200  --page-size Letter http://yfile.news.yorku.ca/ YFILE_$DATE.pdf
-xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver http://yfile.news.yorku.ca/ temp.png
-pngcrush temp.png YFILE_$DATE.png
+xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltopdf --use-xserver --dpi 200  --page-size Letter http://calendars.registrar.yorku.ca YU_Calendars_$DATE.pdf
+xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver http://calendars.registrar.yorku.ca temp.png
+pngcrush temp.png YU_Calendars_$DATE.png
 rm temp.png
 /usr/local/bin/wget --page-requisites --warc-file=YU_Calendars_$DATE --wait=3 http://calendars.registrar.yorku.ca
 cp YU_Calendars_$DATE.warc.gz /mnt/diy/DIY/web-archiving/wayback
