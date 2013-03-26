@@ -2,7 +2,7 @@
 # Bash script that archives selected Government of Canada web sites using the WARC ISO format.
 DATE=`date +"%Y_%m_%d"`
 ROOT=/mnt/diy/DIY/web-archiving/warc
-SITES=/mnt/diy/DIY/web-archiving/sites/gc-weekly.csv
+SITES=/mnt/diy/DIY/web-archiving/sites/gc-daily.csv
 
 cat $SITES | while IFS=, read col1 col2
   do
@@ -13,7 +13,7 @@ cat $SITES | while IFS=, read col1 col2
     xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver "$col1" temp.png
     pngcrush temp.png $col2-$DATE.png 
     rm temp.png
-    /usr/local/bin/wget -m -p -E -k -K -np --page-requisites --warc-file=$col2-$DATE --random-wait "$col1"
+    /usr/local/bin/wget --page-requisites --warc-file=$col2-$DATE --random-wait "$col1"
     cp $col2-$DATE.warc.gz /mnt/diy/DIY/web-archiving/wayback
     cd ..
     /usr/bin/python /usr/local/bin/bagit.py --processes 4 --contact-name 'Nick Ruest' --contact-email 'ruestn@yorku.ca' --source-organization 'York University' --organization-address '4700 Keele Street Toronto, Ontario M3J 1P3 Canada' --contact-phone '+1 (416)736-2100 x 33235' --external-description 'Government of Canada web archiving: $col1 $col2' $col2-$DATE

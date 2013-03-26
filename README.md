@@ -2,9 +2,7 @@
 
 ### Description
 
-This is a collection of shell scripts to archive York University websites using the [Web ARChive (WARC)](http://en.wikipedia.org/wiki/Web_ARChive) in combination with the [Bagit](http://en.wikipedia.org/wiki/BagIt) spec. This is the beginnings of web archiving at YUL. 
-
-You have to start somewhere ;)
+This is a collection of shell scripts to archive York University and Government of Canada websites using wget with the [Web ARChive (WARC)](http://en.wikipedia.org/wiki/Web_ARChive) standard, and wkhtmltopdf/image. Each crawl is bagged using the [Bagit](http://en.wikipedia.org/wiki/BagIt) spec.
 
 ### Requirements
 
@@ -12,6 +10,7 @@ You have to start somewhere ;)
 * [wkhtmltoimage](http://code.google.com/p/wkhtmltopdf/downloads/detail?name=wkhtmltoimage-0.11.0_rc1-static-amd64.tar.bz2&can=2&q=) (put in path)
 * pngcrush `sudo apt-get install pngcrush`
 * [wget](http://savannah.gnu.org/forum/forum.php?forum_id=7323) (>1.14)
+* [bagit](https://github.com/edsu/bagit) `pip install bagit`
 
 ### Installation
 
