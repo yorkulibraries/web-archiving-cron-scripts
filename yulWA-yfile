@@ -11,8 +11,8 @@ xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltopdf --use-xserver --dpi 200  --p
 xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver http://yfile.news.yorku.ca/ temp.png
 pngcrush temp.png YFILE_$DATE.png
 rm temp.png
-/usr/local/bin/wget --mirror --page-requisites --warc-file=YFILE_$DATE --no-warc-compression --wait=3 http://yfile.news.yorku.ca/
-cp YFILE_$DATE.warc /mnt/DIY/web-archiving/wayback
+/usr/local/bin/wget --mirror --page-requisites --warc-file=YFILE_$DATE --no-warc-compression --wait=1 http://yfile.news.yorku.ca/
+cp YFILE_$DATE.warc /mnt/big_data/web-archiving/wayback-warcs
 cd /mnt/DIY/web-archiving/warc
 /usr/bin/zip -r YFILE_$DATE.zip YFILE_$DATE
 rm -rf YFILE_$DATE
