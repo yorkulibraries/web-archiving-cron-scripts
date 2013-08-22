@@ -1,18 +1,19 @@
 #!/bin/sh
 
-cd /tmp/yu-calendars-batch
+cd "/home/nruest/tmp/yfile"
 for i in `ls -1 *.warc`;
     do
+        IMAGE=/home/nruest/Downloads/defaultimg.png
         FILESIZE=`ls -sh $i | awk '{print $1}'`
-        DATE=`echo $i | sed -re 's/(YU_Calendars_)(.{4,})(_)(.{2,})(_)(.{2,})(.warc)/\2\-\4\-\6/'`
+        DATE=`echo $i | sed -re 's/(YFILE_)(.{4,})(_)(.{2,})(_)(.{2,})(.warc)/\2\-\4\-\6/'`
         FILENAME=`echo $i | sed 's/.warc//'`
         MODS="
 <mods:mods xmlns='http://www.loc.gov/mods/v3' xmlns:mods='http://www.loc.gov/mods/v3' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
   <mods:titleInfo>
-    <mods:title>Academic Calendars - $DATE</mods:title>
+    <mods:title>YFile - $DATE</mods:title>
   </mods:titleInfo>
   <mods:name type='corporate'>
-    <mods:namePart>York University Registrat's Office</mods:namePart>
+    <mods:namePart>York University's Communications &amp; Public Affairs</mods:namePart>
     <mods:role>
       <mods:roleTerm authority='marcrelator' type='text'>Creator</mods:roleTerm>
     </mods:role>
@@ -32,17 +33,18 @@ for i in `ls -1 *.warc`;
   <mods:language>
     <mods:languageTerm authority='iso639-2b' type='code'>eng</mods:languageTerm>
   </mods:language>
-  <mods:abstract>Bi-monthly crawl of York University Calendars</mods:abstract>
+  <mods:abstract>Daily crawl of YFile</mods:abstract>
   <mods:identifier type='local'>$FILENAME</mods:identifier>
   <mods:physicalDescription>
     <mods:form authority='marcform'>electronic</mods:form>
     <mods:extent>$FILESIZE</mods:extent>
   </mods:physicalDescription>
-  <mods:subject>$
-    <mods:topic>academic calendars</mods:topic>
-    <mods:topic>university calendars</mods:topic>
+  <mods:subject>
+    <mods:topic>newsletter</mods:topic>
+    <mods:topic>York University</mods:topic>
   </mods:subject>
 </mods:mods>"
 
         echo $MODS > $FILENAME.xml
+        cp $IMAGE $FILENAME-TN.png
 done
