@@ -44,14 +44,14 @@ for i in `ls -1 *.warc`;
   <mods:language>
     <mods:languageTerm authority='iso639-2b' type='code'>eng</mods:languageTerm>
   </mods:language>
-  <mods:abstract>Bi-monthly crawl of York University Calendars</mods:abstract>
+  <mods:abstract>Bi-monthly crawl of York University Academic Calendars</mods:abstract>
   <mods:identifier type='local'>$FILENAME</mods:identifier>
   <mods:physicalDescription>
     <mods:form authority='marcform'>electronic</mods:form>
     <mods:extent>$FILESIZE</mods:extent>
   </mods:physicalDescription>
   <mods:note></mods:note>
-  <mods:subject>$
+  <mods:subject>
     <mods:topic>academic calendars</mods:topic>
     <mods:topic>university calendars</mods:topic>
   </mods:subject>
