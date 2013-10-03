@@ -4,7 +4,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 DATE=`date +"%Y_%m_%d"`
 ISODATE=`date +"%Y-%m-%d"`
 
-cd /mnt/big_data/web-archiving/warcs/yf
+cd /mnt/DIY/web-archiving/warcs/yf
 mkdir YFILE_$DATE
 cd YFILE_$DATE
 FILESIZE=`ls -sh YFILE_$DATE | awk '{print $1}'`
@@ -50,7 +50,7 @@ xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltopdf --use-xserver --dpi 200  --p
 xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver http://yfile.news.yorku.ca/ temp.png
 pngcrush temp.png YFILE_$DATE.png
 rm temp.png
-/usr/local/bin/wget --mirror --page-requisites --warc-file=YFILE_$DATE --no-warc-compression --wait=1 http://yfile.news.yorku.ca/
+/usr/local/bin/wget --mirror --page-requisites --warc-file=YFILE_$DATE --no-warc-compression --wait=15 http://yfile.news.yorku.ca/
 echo $MODS > YFILE_$DATE.xml
 cp YFILE_$DATE.warc /mnt/big_data/web-archiving/wayback-warcs
 rm -rf yfile.news.yorku.ca
