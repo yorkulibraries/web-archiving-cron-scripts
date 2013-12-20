@@ -66,8 +66,6 @@ xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltopdf --use-xserver --dpi 200  --p
 xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver http://calendars.registrar.yorku.ca temp.png
 pngcrush temp.png YU_Calendars_$DATE.png
 rm temp.png
-#/usr/local/bin/wget --mirror --page-requisites --warc-file=YU_Calendars_$DATE --no-warc-compression --wait=1 http://calendars.registrar.yorku.ca
 echo $MODS > YU_Calendars_$DATE.xml
-#cp YU_Calendars_$DATE.warc /mnt/big_data/web-archiving/wayback-warcs
-#rm -rf calendars.registrar.yorku.ca
+/usr/bin/curl -v -d "action=teardown" -k -u nruest:password --anyauth --location https://130.63.72.17:9191/engine/job/academic-calendars && /usr/bin/curl -v -d "action=build" -k -u nruest:password --anyauth --location https://130.63.72.17:9191/engine/job/academic-calendars && /usr/bin/curl -v -d "action=launch" -k -u nruest:password --anyauth --location https://130.63.72.17:9191/engine/job/academic-calendars && /usr/bin/curl -v -d "action=unpause" -k -u nruest:password --anyauth --location https://130.63.72.17:9191/engine/job/academic-calendars 
 echo "$(date) - Academic Calendars archived" >> /var/log/webarchiving.log

@@ -65,8 +65,6 @@ xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltopdf --use-xserver --dpi 200  --p
 xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver http://yfile.news.yorku.ca/ temp.png
 pngcrush temp.png YFILE_$DATE.png
 rm temp.png
-#/usr/local/bin/wget --mirror --page-requisites --warc-file=YFILE_$DATE --no-warc-compression --wait=15 http://yfile.news.yorku.ca/
 echo $MODS > YFILE_$DATE.xml
-#cp YFILE_$DATE.warc /mnt/big_data/web-archiving/wayback-warcs
-#rm -rf yfile.news.yorku.ca
+/usr/bin/curl -v -d "action=teardown" -k -u nruest:password --anyauth --location https://130.63.72.17:9191/engine/job/yfile && /usr/bin/curl -v -d "action=build" -k -u nruest:password --anyauth --location https://130.63.72.17:9191/engine/job/yfile && /usr/bin/curl -v -d "action=launch" -k -u nruest:password --anyauth --location https://130.63.72.17:9191/engine/job/yfile && /usr/bin/curl -v -d "action=unpause" -k -u nruest:password --anyauth --location https://130.63.72.17:9191/engine/job/yfile
 echo "$(date) - YFile archived" >> /var/log/webarchiving.log
