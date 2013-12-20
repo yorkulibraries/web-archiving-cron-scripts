@@ -3,11 +3,11 @@
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 DATE=`date +"%Y_%m_%d"`
 ISODATE=`date +"%Y-%m-%d"`
+URLDATE=`date +"%Y%m%d"`
 
 cd /mnt/DIY/web-archiving/warcs/calendar
 mkdir YU_Calendars_$DATE
 cd YU_Calendars_$DATE
-FILESIZE=`ls -sh YU_Calendars_$DATE.warc | awk '{print $1}'`
 MODS="
 <mods:mods xmlns='http://www.loc.gov/mods/v3' xmlns:mods='http://www.loc.gov/mods/v3' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
   <mods:titleInfo>
@@ -22,7 +22,7 @@ MODS="
   <mods:typeOfResource>mixed material</mods:typeOfResource>
   <mods:genre authority='lctgm'>Website</mods:genre>
   <mods:originInfo>
-    <mods:dateIssued>$ISODATE</mods:dateIssued>
+    <mods:dateCaptured>$ISODATE</dateCaptured>
     <mods:publisher>York University</mods:publisher>
     <mods:place>
       <mods:placeTerm authority='marccountry' type='code'>Canada</mods:placeTerm>
@@ -36,9 +36,24 @@ MODS="
   </mods:language>
   <mods:abstract>Bi-monthly crawl of York University Academic Calendars</mods:abstract>
   <mods:identifier type='local'>YU_Calendars_$DATE</mods:identifier>
+  <mods:relatedItem type='host'>
+    <mods:titleInfo>
+      <mods:title>Academic Calendars | York University</mods:title>
+    </mods:titleInfo>
+    <mods:location>
+      <mods:url>http://calendars.registrar.yorku.ca/</mods:url>
+    </mods:location>
+  </mods:relatedItem>
+  <mods:location>
+    <mods:url displayLabel='Active site (if available)'>http://www.franulmer.com/</mods:url>
+  </mods:location>
+  <mods:location>
+    <mods:url displayLabel='Archived site'>http://digital.library.yorku.ca/wayback/$URLDATE/http://calendars.registrar.yorku.ca/</mods:url>
+  </mods:location>
   <mods:physicalDescription>
     <mods:form authority='marcform'>electronic</mods:form>
-    <mods:extent>$FILESIZE</mods:extent>
+    <mods:internetMediaType>text/html</mods:internetMediaType>
+    <mods:internetMediaType>image/jpg</mods:internetMediaType>
   </mods:physicalDescription>
   <mods:subject>
     <mods:topic>academic calendars</mods:topic>
@@ -51,8 +66,8 @@ xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltopdf --use-xserver --dpi 200  --p
 xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver http://calendars.registrar.yorku.ca temp.png
 pngcrush temp.png YU_Calendars_$DATE.png
 rm temp.png
-/usr/local/bin/wget --mirror --page-requisites --warc-file=YU_Calendars_$DATE --no-warc-compression --wait=1 http://calendars.registrar.yorku.ca
+#/usr/local/bin/wget --mirror --page-requisites --warc-file=YU_Calendars_$DATE --no-warc-compression --wait=1 http://calendars.registrar.yorku.ca
 echo $MODS > YU_Calendars_$DATE.xml
-cp YU_Calendars_$DATE.warc /mnt/big_data/web-archiving/wayback-warcs
-rm -rf calendars.registrar.yorku.ca
+#cp YU_Calendars_$DATE.warc /mnt/big_data/web-archiving/wayback-warcs
+#rm -rf calendars.registrar.yorku.ca
 echo "$(date) - Academic Calendars archived" >> /var/log/webarchiving.log

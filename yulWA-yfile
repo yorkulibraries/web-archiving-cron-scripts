@@ -3,11 +3,11 @@
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 DATE=`date +"%Y_%m_%d"`
 ISODATE=`date +"%Y-%m-%d"`
+URLDATE=`date +"%Y%m%d"`
 
 cd /mnt/DIY/web-archiving/warcs/yf
 mkdir YFILE_$DATE
 cd YFILE_$DATE
-FILESIZE=`ls -sh YFILE_$DATE | awk '{print $1}'`
 MODS="
 <mods:mods xmlns='http://www.loc.gov/mods/v3' xmlns:mods='http://www.loc.gov/mods/v3' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
   <mods:titleInfo>
@@ -22,7 +22,7 @@ MODS="
   <mods:typeOfResource>mixed material</mods:typeOfResource>
   <mods:genre authority='lctgm'>Website</mods:genre>
   <mods:originInfo>
-    <mods:dateIssued>$ISODATE</mods:dateIssued>
+    <mods:dateCaptured$ISODATE</mods:dateCaptured>
     <mods:publisher>York University</mods:publisher>
     <mods:place>
       <mods:placeTerm authority='marccountry' type='code'>Canada</mods:placeTerm>
@@ -38,8 +38,23 @@ MODS="
   <mods:identifier type='local'>YFILE_$DATE</mods:identifier>
   <mods:physicalDescription>
     <mods:form authority='marcform'>electronic</mods:form>
-    <mods:extent>$FILESIZE</mods:extent>
+    <mods:internetMediaType>text/html</mods:internetMediaType>
+    <mods:internetMediaType>image/jpg</mods:internetMediaType>
   </mods:physicalDescription>
+  <mods:relatedItem type='host'>
+    <mods:titleInfo>
+      <mods:title>YFile</mods:title>
+    </mods:titleInfo>
+    <mods:location>
+      <mods:url>http://yfile.news.yorku.ca/</mods:url>
+    </mods:location>
+  </mods:relatedItem>
+  <mods:location>
+    <mods:url displayLabel='Active site (if available)'>http://yfile.news.yorku.ca/</mods:url>
+  </mods:location>
+    <mods:displayLabel='Archived site'>http://digital.library.yorku.ca/wayback/$URLDATE/http://yfile.news.yorku.ca/</mods:url>
+  <mods:location>
+  </mods:location>
   <mods:subject>
     <mods:topic>newsletter</mods:topic>
     <mods:topic>York University</mods:topic>
@@ -50,8 +65,8 @@ xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltopdf --use-xserver --dpi 200  --p
 xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver http://yfile.news.yorku.ca/ temp.png
 pngcrush temp.png YFILE_$DATE.png
 rm temp.png
-/usr/local/bin/wget --mirror --page-requisites --warc-file=YFILE_$DATE --no-warc-compression --wait=15 http://yfile.news.yorku.ca/
+#/usr/local/bin/wget --mirror --page-requisites --warc-file=YFILE_$DATE --no-warc-compression --wait=15 http://yfile.news.yorku.ca/
 echo $MODS > YFILE_$DATE.xml
-cp YFILE_$DATE.warc /mnt/big_data/web-archiving/wayback-warcs
-rm -rf yfile.news.yorku.ca
+#cp YFILE_$DATE.warc /mnt/big_data/web-archiving/wayback-warcs
+#rm -rf yfile.news.yorku.ca
 echo "$(date) - YFile archived" >> /var/log/webarchiving.log
