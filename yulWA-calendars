@@ -46,8 +46,6 @@ MODS="
   </mods:relatedItem>
   <mods:location>
     <mods:url displayLabel='Active site'>http://www.franulmer.com/</mods:url>
-  </mods:location>
-  <mods:location>
     <mods:url displayLabel='Archived site'>http://digital.library.yorku.ca/wayback/$URLDATE/http://calendars.registrar.yorku.ca/</mods:url>
   </mods:location>
   <mods:physicalDescription>
