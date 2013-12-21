@@ -22,7 +22,7 @@ MODS="
   <mods:typeOfResource>mixed material</mods:typeOfResource>
   <mods:genre authority='lctgm'>Website</mods:genre>
   <mods:originInfo>
-    <mods:dateCaptured$ISODATE</mods:dateCaptured>
+    <mods:dateCaptured>$ISODATE</mods:dateCaptured>
     <mods:publisher>York University</mods:publisher>
     <mods:place>
       <mods:placeTerm authority='marccountry' type='code'>Canada</mods:placeTerm>
@@ -52,7 +52,7 @@ MODS="
   <mods:location>
     <mods:url displayLabel='Active site (if available)'>http://yfile.news.yorku.ca/</mods:url>
   </mods:location>
-    <mods:displayLabel='Archived site'>http://digital.library.yorku.ca/wayback/$URLDATE/http://yfile.news.yorku.ca/</mods:url>
+    <mods:url displayLabel='Archived site'>http://digital.library.yorku.ca/wayback/$URLDATE/http://yfile.news.yorku.ca/</mods:url>
   <mods:location>
   </mods:location>
   <mods:subject>
