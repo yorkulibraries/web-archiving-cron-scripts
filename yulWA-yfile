@@ -50,7 +50,7 @@ MODS="
     </mods:location>
   </mods:relatedItem>
   <mods:location>
-    <mods:url displayLabel='Active site (if available)'>http://yfile.news.yorku.ca/</mods:url>
+    <mods:url displayLabel='Active site'>http://yfile.news.yorku.ca/</mods:url>
     <mods:url displayLabel='Archived site'>http://digital.library.yorku.ca/wayback/$URLDATE/http://yfile.news.yorku.ca/</mods:url>
   </mods:location>
   <mods:subject>

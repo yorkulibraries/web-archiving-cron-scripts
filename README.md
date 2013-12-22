@@ -2,19 +2,18 @@
 
 ### Description
 
-This is a collection of shell scripts to archive York University and Government of Canada websites using wget with the [Web ARChive (WARC)](http://en.wikipedia.org/wiki/Web_ARChive) standard, and wkhtmltopdf/image. Each crawl is bagged using the [Bagit](http://en.wikipedia.org/wiki/BagIt) spec.
+This is a collection of shell scripts to capture and preserve York University and Government of Canada websites using [Heritrix](https://webarchive.jira.com/wiki/display/Heritrix/Heritrix;jsessionid=B3B6591DAB2E6A92F6BBD26D8C41BE7C) with the [Web ARChive (WARC)](http://en.wikipedia.org/wiki/Web_ARChive) standard, wkhtmltopdf/image, and a descriptive metadata ([MODS](http://www.loc.gov/standards/mods/)) record.
 
 ### Requirements
 
 * wkhtmltopdf `sudo apt-get install wkhtmltopdf`
 * [wkhtmltoimage](http://code.google.com/p/wkhtmltopdf/downloads/detail?name=wkhtmltoimage-0.11.0_rc1-static-amd64.tar.bz) (put in path)
 * pngcrush `sudo apt-get install pngcrush`
-* [wget](http://savannah.gnu.org/forum/forum.php?forum_id=7323) (>1.14)
-* [bagit](https://github.com/edsu/bagit) `pip install bagit`
+* [Herirtrix](https://webarchive.jira.com/wiki/display/Heritrix/Heritrix;jsessionid=B3B6591DAB2E6A92F6BBD26D8C41BE7C)
 
 ### Installation
 
-Clone the repository, and put the shell scripts in a path that cron can execute
+Setup the above requirements, clone the repository, and put the shell scripts in a path that cron can execute:
 
     git clone https://github.com/yorkulibraries/yul-web-archiving.git
     ln -s /path/to/web/archiving/script /path/that/cron/can/execute
