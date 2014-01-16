@@ -64,5 +64,5 @@ xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver http://yfile
 pngcrush temp.png YFILE_$DATE.png
 rm temp.png
 echo $MODS > YFILE_$DATE.xml
-/usr/bin/curl -v -d "action=teardown" -k -u nruest:password --anyauth --location https://130.63.72.17:9191/engine/job/yfile && /usr/bin/curl -v -d "action=build" -k -u nruest:password --anyauth --location https://130.63.72.17:9191/engine/job/yfile && /usr/bin/curl -v -d "action=launch" -k -u nruest:password --anyauth --location https://130.63.72.17:9191/engine/job/yfile && /usr/bin/curl -v -d "action=unpause" -k -u nruest:password --anyauth --location https://130.63.72.17:9191/engine/job/yfile
+/usr/bin/curl -v -d "action=teardown" -k -u nruest:password --anyauth --location https://130.63.72.17:9191/engine/job/yfile && sleep 10 && /usr/bin/curl -v -d "action=build" -k -u nruest:password --anyauth --location https://130.63.72.17:9191/engine/job/yfile && sleep 10 && /usr/bin/curl -v -d "action=launch" -k -u nruest:password --anyauth --location https://130.63.72.17:9191/engine/job/yfile && sleep 10 && /usr/bin/curl -v -d "action=unpause" -k -u nruest:password --anyauth --location https://130.63.72.17:9191/engine/job/yfile
 echo "$(date) - YFile archived" >> /var/log/webarchiving.log
