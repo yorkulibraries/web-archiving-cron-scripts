@@ -1,0 +1,46 @@
+#!/bin/bash
+# Bash script that archives selected web sites using the WARC ISO format.
+
+usage () 
+    {
+        cat <<EOF
+        Usage: $0 options
+
+        Program to capture and preserve websites.
+
+        OPTIONS:
+          -h Show this message
+          -t Title/name of the website being captured and preserved
+          -u URL of the website being captured and preserved
+EOF
+    }
+
+DATE=`date +"%Y_%m_%d"`
+
+while getopts ":ht:u:" OPTION
+do
+    case $OPTION in
+        h)
+            usage
+            exit 1
+            ;;
+        t)
+            TITLE=$OPTARG
+            ;;
+        u)
+            URL=$OPTARG
+            ;;
+    esac
+done
+
+printf "Creating a pdf of: $URL \n"
+xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltopdf --use-xserver --dpi 200  --page-size Letter "$URL" $TITLE-$DATE.pdf
+printf "Created: $TITLE-$DATE.pdf \n"
+printf "Taking a screenshoot of: $URL \n"
+xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver "$URL" temp.png
+pngcrush temp.png $TITLE-$DATE.png
+rm temp.png
+printf "Created: $TITLE-$DATE.png \n"
+printf "Crawling: $URL \n"
+/usr/local/bin/wget --mirror --page-requisites --warc-file=$TITLE-$DATE --no-warc-compression --wait=1 "$URL"
+printf "Created: $TITLE-$DATE.warc"
