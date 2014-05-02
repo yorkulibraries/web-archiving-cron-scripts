@@ -1,17 +1,17 @@
 #!/bin/bash
-# Bash script that archives selected web sites using the WARC ISO format.
+# Bash script that captures selected web sites using the WARC ISO format.
 
 usage () 
     {
         cat <<EOF
         Usage: $0 options
 
-        Program to capture and preserve websites.
+        Program to capture websites.
 
         OPTIONS:
           -h Show this message
-          -t Title/name of the website being captured and preserved
-          -u URL of the website being captured and preserved
+          -t Title/name of the website being captured
+          -u URL of the website being captured
 EOF
     }
 
