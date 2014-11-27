@@ -6,8 +6,8 @@ This is a collection of shell scripts to capture and preserve York University an
 
 ### Requirements
 
-* wkhtmltopdf `sudo apt-get install wkhtmltopdf`
-* [wkhtmltoimage](http://code.google.com/p/wkhtmltopdf/downloads/detail?name=wkhtmltoimage-0.11.0_rc1-static-amd64.tar.bz) (put in path)
+* [wkhtmltopdf](http://wkhtmltopdf.org/)
+* [wkhtmltoimage](http://wkhtmltopdf.org/)
 * pngcrush `sudo apt-get install pngcrush`
 * [Herirtrix](https://webarchive.jira.com/wiki/display/Heritrix/Heritrix;jsessionid=B3B6591DAB2E6A92F6BBD26D8C41BE7C)
 
