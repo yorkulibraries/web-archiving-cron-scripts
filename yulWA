@@ -42,5 +42,5 @@ pngcrush temp.png $TITLE-$DATE.png
 rm temp.png
 printf "Created: $TITLE-$DATE.png \n"
 printf "Crawling: $URL \n"
-/usr/local/bin/wget --mirror --page-requisites --warc-file=$TITLE-$DATE --no-warc-compression --wait=1 "$URL"
+/usr/local/bin/wget --mirror --page-requisites --warc-file=$TITLE-$DATE --wait=1 "$URL"
 printf "Created: $TITLE-$DATE.warc"
