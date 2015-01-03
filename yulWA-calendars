@@ -5,7 +5,7 @@ DATE=`date +"%Y_%m_%d"`
 ISODATE=`date +"%Y-%m-%d"`
 URLDATE=`date +"%Y%m%d"`
 
-cd /big_data/wayback_data/bash-web-archiving/warcs/calendar
+cd /big_data/wayback_data/bash-web-archiving/calendar
 mkdir YU_Calendars_$DATE
 cd YU_Calendars_$DATE
 MODS="
@@ -22,7 +22,7 @@ MODS="
   <mods:typeOfResource>mixed material</mods:typeOfResource>
   <mods:genre authority='lctgm'>Website</mods:genre>
   <mods:originInfo>
-    <mods:dateCaptured>$ISODATE</dateCaptured>
+    <mods:dateCaptured>$ISODATE</mods:dateCaptured>
     <mods:publisher>York University</mods:publisher>
     <mods:place>
       <mods:placeTerm authority='marccountry' type='code'>Canada</mods:placeTerm>
@@ -45,7 +45,7 @@ MODS="
     </mods:location>
   </mods:relatedItem>
   <mods:location>
-    <mods:url displayLabel='Active site'>http://www.franulmer.com/</mods:url>
+    <mods:url displayLabel='Active site'>http://calendars.registrar.yorku.ca/</mods:url>
     <mods:url displayLabel='Archived site'>http://digital.library.yorku.ca/wayback/$URLDATE/http://calendars.registrar.yorku.ca/</mods:url>
   </mods:location>
   <mods:physicalDescription>

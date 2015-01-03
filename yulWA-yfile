@@ -5,7 +5,7 @@ DATE=`date +"%Y_%m_%d"`
 ISODATE=`date +"%Y-%m-%d"`
 URLDATE=`date +"%Y%m%d"`
 
-cd /big_data/wayback_data/bash-web-archiving/warcs/yf
+cd /big_data/wayback_data/bash-web-archiving/yf
 mkdir YFILE_$DATE
 cd YFILE_$DATE
 MODS="
