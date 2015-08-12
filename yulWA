@@ -41,6 +41,6 @@ xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver "$URL" temp.
 pngcrush temp.png $TITLE-$DATE.png
 rm temp.png
 printf "Created: $TITLE-$DATE.png \n"
-printf "Crawling: $URL \n"
-/usr/local/bin/wget --mirror --page-requisites --warc-file=$TITLE-$DATE --wait=1 "$URL"
-printf "Created: $TITLE-$DATE.warc"
+#printf "Crawling: $URL \n"
+#/usr/local/bin/wget --mirror --page-requisites --warc-file=$TITLE-$DATE --wait=1 "$URL"
+#printf "Created: $TITLE-$DATE.warc"

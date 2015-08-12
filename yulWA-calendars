@@ -14,7 +14,7 @@ MODS="
     <mods:title>Academic Calendars - $ISODATE</mods:title>
   </mods:titleInfo>
   <mods:name type='corporate'>
-    <mods:namePart>York University Registrat's Office</mods:namePart>
+    <mods:namePart>York University Registrar's Office</mods:namePart>
     <mods:role>
       <mods:roleTerm authority='marcrelator' type='text'>Creator</mods:roleTerm>
     </mods:role>
