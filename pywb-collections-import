@@ -1,57 +1,27 @@
 #!/bin/bash
 
+import_collection_and_delete_files() {
+    local collection_name="$1"
+    local file_pattern="$2"
+    
+    local files=($(shopt -s nullglob dotglob; find /mnt/omega/web-archives/import -iname "$file_pattern"))
+    if (( ${#files[@]} )); then
+        cd /mnt/omega/web-archives
+        wb-manager add "$collection_name" /mnt/omega/web-archives/import/"${files[0]}"
+        find /mnt/omega/web-archives/import -iname "$file_pattern" -type f -delete
+    fi
+}
+
+# Activate Python virtual env.
 cd /opt
 python3 -m venv pywbenv
 source pywbenv/bin/activate
 
-calendars=$(shopt -s nullglob dotglob; find /mnt/omega/web-archives/import -iname "YORK-ACADEMIC-CALENDARS*warc.gz")
-
-if (( ${#calendars} ))
-  then
-    cd /mnt/omega/web-archives
-    wb-manager add academic-calendars /mnt/omega/web-archives/import/YORK-ACADEMIC-CALENDARS*warc.gz
-    find /mnt/omega/web-archives/import -iname "YORK-ACADEMIC-CALENDARS*warc.gz" -type f -delete
-fi
-
-nrtee=$(shopt -s nullglob dotglob; find /mnt/omega/web-archives/import -iname "NRTEE*warc.gz")
-
-if (( ${#nrtee} ))
-  then
-    cd /mnt/omega/web-archives
-    wb-manager add NRTEE /mnt/omega/web-archives/import/NRTEE*warc.gz
-    find /mnt/omega/web-archives/import -iname "NRTEE*warc.gz" -type f -delete
-fi
-
-yul=$(shopt -s nullglob dotglob; find /mnt/omega/web-archives/import -iname "YORK-LIBRARIES*warc.gz")
-
-if (( ${#yul} ))
-  then
-    cd /mnt/omega/web-archives
-    wb-manager add yul /mnt/omega/web-archives/import/YORK-LIBRARIES*warc.gz
-    find /mnt/omega/web-archives/import -iname "YORK-LIBRARIES*warc.gz" -type f -delete
-fi
-
-crs=$(shopt -s nullglob dotglob; find /mnt/omega/web-archives/import -iname "YU-JGRANT*warc.gz")
-
-if (( ${#crs} ))
-  then
-    cd /mnt/omega/web-archives
-    wb-manager add yu-crs /mnt/omega/web-archives/import/YU-JGRANT*warc.gz
-    find /mnt/omega/web-archives/import -iname "YU-JGRANT*warc.gz" -type f -delete
-fi
-
-magazine=$(shopt -s nullglob dotglob; find /mnt/omega/web-archives/import -iname "MAGAZINE*warc.gz")
-
-if (( ${#magazine} ))
-  then
-    wb-manager add yu-magazine /mnt/omega/web-archives/import/MAGAZINE*warc.gz
-    find /mnt/omega/web-archives/import -iname "MAGAZINE*warc.gz" -type f -delete
-fi
-
-secretariat=$(shopt -s nullglob dotglob; find /mnt/omega/web-archives/import -iname "SECRETARIAT*warc.gz")
-
-if (( ${#secretariat} ))
-  then
-    wb-manager add yu-crs /mnt/omega/web-archives/import/SECRETARIAT*warc.gz
-    find /mnt/omega/web-archives/import -iname "SECRETARIAT*warc.gz" -type f -delete
-fi
+# Import collections and delete related files
+import_collection_and_delete_files "academic-calendars" "YORK-ACADEMIC-CALENDARS*warc.gz"
+import_collection_and_delete_files "NRTEE" "NRTEE*warc.gz"
+import_collection_and_delete_files "yul" "YORK-LIBRARIES*warc.gz"
+import_collection_and_delete_files "yu-crs" "YU-JGRANT*warc.gz"
+import_collection_and_delete_files "yu-magazine" "MAGAZINE*warc.gz"
+import_collection_and_delete_files "yu-crs" "SECRETARIAT*warc.gz"
+import_collection_and_delete_files "yfile" "YFILE*warc.gz"
