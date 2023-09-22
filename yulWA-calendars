@@ -2,68 +2,6 @@
 # Bash script that archives selected York University web sites using the WARC ISO format.
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 DATE=`date +"%Y_%m_%d"`
-ISODATE=`date +"%Y-%m-%d"`
-URLDATE=`date +"%Y%m%d"`
 
-cd /big_data/wayback_data/bash-web-archiving/calendar
-mkdir YU_Calendars_$DATE
-cd YU_Calendars_$DATE
-MODS="
-<mods:mods xmlns='http://www.loc.gov/mods/v3' xmlns:mods='http://www.loc.gov/mods/v3' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-  <mods:titleInfo>
-    <mods:title>Academic Calendars - $ISODATE</mods:title>
-  </mods:titleInfo>
-  <mods:name type='corporate'>
-    <mods:namePart>York University Registrar's Office</mods:namePart>
-    <mods:role>
-      <mods:roleTerm authority='marcrelator' type='text'>Creator</mods:roleTerm>
-    </mods:role>
-  </mods:name>
-  <mods:typeOfResource>mixed material</mods:typeOfResource>
-  <mods:genre authority='lctgm'>Website</mods:genre>
-  <mods:originInfo>
-    <mods:dateCaptured>$ISODATE</mods:dateCaptured>
-    <mods:publisher>York University</mods:publisher>
-    <mods:place>
-      <mods:placeTerm authority='marccountry' type='code'>Canada</mods:placeTerm>
-    </mods:place>
-    <mods:place>
-      <mods:placeTerm type='text'>Toronto</mods:placeTerm>
-    </mods:place>
-  </mods:originInfo>
-  <mods:language>
-    <mods:languageTerm authority='iso639-2b' type='code'>eng</mods:languageTerm>
-  </mods:language>
-  <mods:abstract>Bi-monthly crawl of York University Academic Calendars</mods:abstract>
-  <mods:identifier type='local'>YU_Calendars_$DATE</mods:identifier>
-  <mods:relatedItem type='host'>
-    <mods:titleInfo>
-      <mods:title>Academic Calendars | York University</mods:title>
-    </mods:titleInfo>
-    <mods:location>
-      <mods:url>http://calendars.registrar.yorku.ca/</mods:url>
-    </mods:location>
-  </mods:relatedItem>
-  <mods:location>
-    <mods:url displayLabel='Active site'>http://calendars.registrar.yorku.ca/</mods:url>
-    <mods:url displayLabel='Archived site'>http://digital.library.yorku.ca/wayback/$URLDATE/http://calendars.registrar.yorku.ca/</mods:url>
-  </mods:location>
-  <mods:physicalDescription>
-    <mods:form authority='marcform'>electronic</mods:form>
-    <mods:internetMediaType>text/html</mods:internetMediaType>
-    <mods:internetMediaType>image/jpg</mods:internetMediaType>
-  </mods:physicalDescription>
-  <mods:subject>
-    <mods:topic>academic calendars</mods:topic>
-    <mods:topic>university calendars</mods:topic>
-  </mods:subject>
-</mods:mods>
-"
-
-xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltopdf --use-xserver --dpi 200  --page-size Letter http://calendars.registrar.yorku.ca YU_Calendars_$DATE.pdf
-xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver http://calendars.registrar.yorku.ca temp.png
-pngcrush temp.png YU_Calendars_$DATE.png
-rm temp.png
-echo $MODS > YU_Calendars_$DATE.xml
-/usr/bin/curl -v -d "action=teardown" -k -u nruest:password --anyauth --location https://130.63.180.124:9191/engine/job/academic-calendars && sleep 10 && /usr/bin/curl -v -d "action=build" -k -u nruest:password --anyauth --location https://130.63.180.124:9191/engine/job/academic-calendars && sleep 10 && /usr/bin/curl -v -d "action=launch" -k -u nruest:password --anyauth --location https://130.63.180.124:9191/engine/job/academic-calendars && sleep 10 &&  /usr/bin/curl -v -d "action=unpause" -k -u nruest:password --anyauth --location https://130.63.180.124:9191/engine/job/academic-calendars 
+/usr/bin/curl --silent -d "action=teardown" -k -u nruest:password --anyauth --location https://omega.library.yorku.ca:8983/engine/job/academic-calendars && sleep 10 && /usr/bin/curl --silent -d "action=build" -k -u nruest:password --anyauth --location https://omega.library.yorku.ca:8983/engine/job/academic-calendars && sleep 10 && /usr/bin/curl --silent -d "action=launch" -k -u nruest:password --anyauth --location https://omega.library.yorku.ca:8983/engine/job/academic-calendars && sleep 10 &&  /usr/bin/curl --silent -d "action=unpause" -k -u nruest:password --anyauth --location https://omega.library.yorku.ca:8983/engine/job/academic-calendars 
 echo "$(date) - Academic Calendars archived" >> /var/log/heritrix/YU_Calendars.log

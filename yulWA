@@ -33,9 +33,9 @@ do
     esac
 done
 
-printf "Creating a pdf of: $URL \n"
-xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltopdf --use-xserver --dpi 200  --page-size Letter "$URL" $TITLE-$DATE.pdf
-printf "Created: $TITLE-$DATE.pdf \n"
+#printf "Creating a pdf of: $URL \n"
+#xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltopdf --use-xserver --dpi 200  --page-size Letter "$URL" $TITLE-$DATE.pdf
+#printf "Created: $TITLE-$DATE.pdf \n"
 printf "Taking a screenshoot of: $URL \n"
 xvfb-run -a -s "-screen 0 1280x1024x24" wkhtmltoimage --use-xserver "$URL" temp.png
 pngcrush temp.png $TITLE-$DATE.png

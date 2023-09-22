@@ -1,0 +1,8 @@
+#!/bin/bash
+
+files=$(shopt -s nullglob dotglob; find /mnt/omega/web-archives/crawls -iname "*warc.gz")
+
+if (( ${#files} ))
+  then 
+    find /mnt/omega/web-archives/crawls -iname "*warc.gz" -type f -exec mv -v {} /mnt/omega/web-archives/import \;
+fi

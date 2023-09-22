@@ -1,0 +1,8 @@
+#!/bin/bash
+# Bash script that archives selected York University web sites using the WARC ISO format.
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+DATE=`date +"%Y_%m_%d"`
+
+/usr/bin/curl --silent -d "action=teardown" -k -u nruest:password --anyauth --location https://omega.library.yorku.ca:8983/engine/job/library.yorku.ca && sleep 10 && /usr/bin/curl --silent -d "action=build" -k -u nruest:password --anyauth --location https://omega.library.yorku.ca:8983/engine/job/library.yorku.ca && sleep 10 && /usr/bin/curl --silent -d "action=launch" -k -u nruest:password --anyauth --location https://omega.library.yorku.ca:8983/engine/job/library.yorku.ca && sleep 10 &&  /usr/bin/curl --silent -d "action=unpause" -k -u nruest:password --anyauth --location https://omega.library.yorku.ca:8983/engine/job/library.yorku.ca
+echo "$(date) - library.yorku.ca captured" >> /var/log/heritrix/library.yorku.ca.log
