@@ -7,7 +7,7 @@ import_collection_and_delete_files() {
     local files=($(shopt -s nullglob dotglob; find /mnt/omega/web-archives/import -iname "$file_pattern"))
     if (( ${#files[@]} )); then
         cd /mnt/omega/web-archives
-        wb-manager add "$collection_name" /mnt/omega/web-archives/import/"${files[0]}"
+        wb-manager add "$collection_name" "${files[0]}"
         find /mnt/omega/web-archives/import -iname "$file_pattern" -type f -delete
     fi
 }
