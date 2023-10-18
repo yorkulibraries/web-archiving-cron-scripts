@@ -2,9 +2,9 @@
 
 DATE=$(date +"%Y_%m_%d")
 URL="https://omega.library.yorku.ca:8983/engine/job/academic-calendars"
-USERNAME="nruest"
-PASSWORD="password"
 LOG_FILE="/var/log/heritrix/YU_Calendars.log"
+
+source credentials.env
 
 function start_crawl {
     local action="$1"
