@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 DATE=$(date +"%Y%m%d")
-LOG_FILE="/var/log/heritrix/yu-crs-browsertrix.log"
-CRAWL_CONFIG="/opt/web-archiving-cron-scripts/crawl-configs/yu-crs.yaml"
+LOG_FILE="/var/log/heritrix/yu-social-media-browsertrix.log"
+CRAWL_CONFIG="/opt/web-archiving-cron-scripts/crawl-configs/yu-social-media.yaml"
 CRAWL_DIR="/mnt/omega/web-archives/browsertrix"
-COLLECTION_NAME="yu-crs"
+COLLECTION_NAME="yu-social-media"
 WORKERS=12
 
 function start_crawl {
@@ -20,7 +20,7 @@ function start_crawl {
 
 function stage_warcs {
     cd "$CRAWL_DIR/collections/$COLLECTION_NAME/archive"
-    rename -v 's/rec-/YU-CRS-rec-/g' *.warc.gz
+    rename -v 's/rec-/YU-SOCIAL-MEDIA-rec-/g' *.warc.gz
     mv -v *.warc.gz /mnt/omega/web-archives/import
 }
 

@@ -1,0 +1,253 @@
+seeds:
+  - url: http://instagram.com/environmentyork
+    scopeType: "prefix"
+  - url: http://linkedin.com/groups/48984
+    scopeType: "prefix"
+  - url: https://ancillary.info.yorku.ca/
+    scopeType: "host"
+  - url: https://atlas.yorku.ca/
+    scopeType: "host"
+  - url: https://community.info.yorku.ca/
+    scopeType: "host"
+  - url: https://eclass.yorku.ca/
+    scopeType: "host"
+  - url: https://events.yorku.ca/
+    scopeType: "host"
+  - url: https://futurestudents.yorku.ca/program-search/
+    scopeType: "prefix"
+  - url: https://futurestudents.yorku.ca/requirements/apply
+    scopeType: "prefix"
+  - url: https://gradstudies.yorku.ca/faculty-staff/communications-recruitment/podcast/
+    scopeType: "prefix"
+  - url: https://podcasts.apple.com/us/podcast/schulich-startups-podcast/id1457717831
+    scopeType: "prefix"
+  - url: https://research.info.yorku.ca/
+    scopeType: "host"
+  - url: https://sfs.yorku.ca/
+    scopeType: "host"
+  - url: https://studentclubs.scld.yorku.ca/
+    scopeType: "host"
+  - url: https://teachingandlearning.yorku.ca/
+    scopeType: "host"
+  - url: https://teachingandlearning.yorku.ca/world-leading-professors/
+    scopeType: "prefix"
+  - url: https://twitter.com/Continue_YorkU
+    scopeType: "prefix"
+  - url: https://twitter.com/studentlifeyu
+    scopeType: "prefix"
+  - url: https://twitter.com/YorkGeography
+    scopeType: "prefix"
+  - url: https://twitter.com/yorkhist
+    scopeType: "prefix"
+  - url: https://twitter.com/YorkUEUC
+    scopeType: "prefix"
+  - url: https://twitter.com/YorkUHousing
+    scopeType: "prefix"
+  - url: https://twitter.com/YorkUIntlStdnts
+    scopeType: "prefix"
+  - url: https://twitter.com/yorkulions
+    scopeType: "prefix"
+  - url: https://twitter.com/yorkuniversity
+    scopeType: "prefix"
+  - url: https://twitter.com/YorkUPresident
+    scopeType: "prefix"
+  - url: https://twitter.com/YorkUProvost
+    scopeType: "prefix"
+  - url: https://twitter.com/yorkustudents
+    scopeType: "prefix"
+  - url: https://twitter.com/YorkUYUELI
+    scopeType: "prefix"
+  - url: https://twitter.com/yu_global
+    scopeType: "prefix"
+  - url: https://twitter.com/YUsustain
+    scopeType: "prefix"
+  - url: https://vm.tiktok.com/ZSxYk8SM/
+    scopeType: "prefix"
+  - url: https://www.facebook.com/StudentLifeYU/
+    scopeType: "prefix"
+  - url: https://www.facebook.com/York.International/
+    scopeType: "prefix"
+  - url: https://www.facebook.com/yorku.continue/
+    scopeType: "prefix"
+  - url: https://www.facebook.com/YorkUEUC
+    scopeType: "prefix"
+  - url: https://www.facebook.com/yorkugoglobal/
+    scopeType: "prefix"
+  - url: https://www.facebook.com/yorkuhealth
+    scopeType: "prefix"
+  - url: https://www.facebook.com/yorkulions/
+    scopeType: "prefix"
+  - url: https://www.facebook.com/yorkuniversity
+    scopeType: "prefix"
+  - url: https://www.facebook.com/yorkuresidence/
+    scopeType: "prefix"
+  - url: https://www.facebook.com/yorkustudents/
+    scopeType: "prefix"
+  - url: https://www.facebook.com/YorkUYUELI/
+    scopeType: "prefix"
+  - url: https://www.instagram.com/osgoodehalllawschool
+    scopeType: "prefix"
+  - url: https://www.instagram.com/schulichschool
+    scopeType: "prefix"
+  - url: https://www.instagram.com/studentlifeyu/
+    scopeType: "prefix"
+  - url: https://www.instagram.com/yorkandu/
+    scopeType: "prefix"
+  - url: https://www.instagram.com/yorkueducation/
+    scopeType: "prefix"
+  - url: https://www.instagram.com/yorkugoglobal
+    scopeType: "prefix"
+  - url: https://www.instagram.com/yorkuhealth
+    scopeType: "prefix"
+  - url: https://www.instagram.com/yorkuhousing/
+    scopeType: "prefix"
+  - url: https://www.instagram.com/yorkuintlstdnts
+    scopeType: "prefix"
+  - url: https://www.instagram.com/yorkulaps/
+    scopeType: "prefix"
+  - url: https://www.instagram.com/yorkulions/
+    scopeType: "prefix"
+  - url: https://www.instagram.com/yorkuniversity/
+    scopeType: "prefix"
+  - url: https://www.instagram.com/yorkupresident/
+    scopeType: "prefix"
+  - url: https://www.instagram.com/yorkuscience/
+    scopeType: "prefix"
+  - url: https://www.instagram.com/yorku_scs/?hl=en
+    scopeType: "prefix"
+  - url: https://www.instagram.com/yorkusustainability/
+    scopeType: "prefix"
+  - url: https://www.instagram.com/yorkuyueli/?hl=en
+    scopeType: "prefix"
+  - url: https://www.linkedin.com/edu/york-university-lassonde-school-of-engineering-43265
+    scopeType: "prefix"
+  - url: https://www.linkedin.com/school/continueyorku/
+    scopeType: "prefix"
+  - url: https://www.linkedin.com/school/york-university/
+    scopeType: "prefix"
+  - url: https://www.linkedin.com/school/york-university-laps/
+    scopeType: "prefix"
+  - url: https://www.linkedin.com/showcase/53492860/
+    scopeType: "prefix"
+  - url: https://www.podcastorperish.ca/
+    scopeType: "host"
+  - url: https://www.yorku.ca/about
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/about/campus-life/
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/about/community/
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/about/contact
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/about/email/
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/about/faculty-staff/
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/about/organization/
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/about/our-faculties/
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/about/social-media-directory/
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/campuses/
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/partnerships/
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/uap2020-25/
+    scopeType: "prefix"
+  - url: https://www.youtube.com/user/YorkUniversity
+    scopeType: "prefix"
+  - url: https://yorkinternational.yorku.ca/
+    scopeType: "host"
+  - url: https://yorkulions.ca/
+    scopeType: "host"
+  - url: https://yuexperience.info.yorku.ca/
+    scopeType: "host"
+  - url: http://twitter.com/Bronfmanlibrary
+    scopeType: "prefix"
+  - url: http://twitter.com/GlendonCampus
+    scopeType: "prefix"
+  - url: http://twitter.com/LassondeSchool
+    scopeType: "prefix"
+  - url: http://twitter.com/OsgoodeNews
+    scopeType: "prefix"
+  - url: http://twitter.com/schulichschool
+    scopeType: "prefix"
+  - url: http://twitter.com/ScottLibrary
+    scopeType: "prefix"
+  - url: http://twitter.com/SteacieLibrary
+    scopeType: "prefix"
+  - url: http://twitter.com/YorkUAlumni
+    scopeType: "prefix"
+  - url: http://twitter.com/YorkUAMPD
+    scopeType: "prefix"
+  - url: http://twitter.com/YorkUCareerCtr
+    scopeType: "prefix"
+  - url: http://twitter.com/yorkueducation
+    scopeType: "prefix"
+  - url: http://twitter.com/YorkUFGS
+    scopeType: "prefix"
+  - url: http://twitter.com/YorkUfood
+    scopeType: "prefix"
+  - url: http://twitter.com/YorkUHealth
+    scopeType: "prefix"
+  - url: http://twitter.com/YorkULAPS
+    scopeType: "prefix"
+  - url: http://twitter.com/YorkUnews
+    scopeType: "prefix"
+  - url: http://twitter.com/YorkUScience
+    scopeType: "prefix"
+  - url: http://twitter.com/YorkUYUCard
+    scopeType: "prefix"
+  - url: http://twitter.com/YUResearch
+    scopeType: "prefix"
+  - url: http://www.facebook.com/BronfmanLibrary
+    scopeType: "prefix"
+  - url: http://www.facebook.com/GlendonCampus
+    scopeType: "prefix"
+  - url: http://www.facebook.com/lassondeschool
+    scopeType: "prefix"
+  - url: http://www.facebook.com/Osgoode
+    scopeType: "prefix"
+  - url: http://www.facebook.com/SchulichSchool
+    scopeType: "prefix"
+  - url: http://www.facebook.com/yorkualumni
+    scopeType: "prefix"
+  - url: http://www.facebook.com/YorkUampd
+    scopeType: "prefix"
+  - url: http://www.facebook.com/yorkucareer
+    scopeType: "prefix"
+  - url: http://www.facebook.com/YorkUeducation
+    scopeType: "prefix"
+  - url: http://www.facebook.com/YorkUGeography
+    scopeType: "prefix"
+  - url: http://www.facebook.com/YorkUGradStudies
+    scopeType: "prefix"
+  - url: http://www.facebook.com/YorkUlaps
+    scopeType: "prefix"
+  - url: http://www.facebook.com/yorkuniversity
+    scopeType: "prefix"
+  - url: http://www.facebook.com/YorkUScience
+    scopeType: "prefix"
+  - url: http://www.glendon.yorku.ca/eAmbassadors
+    scopeType: "prefix"
+  - url: http://www.instagram.com/GlendonCampus
+    scopeType: "prefix"
+  - url: http://www.instagram.com/lassondeschool
+    scopeType: "prefix"
+  - url: http://www.instagram.com/yorkualumni
+    scopeType: "prefix"
+  - url: http://www.instagram.com/yorkufood
+    scopeType: "prefix"
+  - url: http://www.linkedin.com/company/167012
+    scopeType: "prefix"
+  - url: http://www.linkedin.com/edu/school?id=10887
+    scopeType: "prefix"
+  - url: http://www.linkedin.com/edu/school?id=19942
+    scopeType: "prefix"
+  - url: http://www.osgoode.yorku.ca/newsroom/faculty-blog-roll
+    scopeType:  "prefix"
+
+warcinfo:
+  operator: York University Libraries
+  hostname: library.yorku.ca
