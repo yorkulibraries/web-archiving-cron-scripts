@@ -1,0 +1,67 @@
+seeds:
+  - url: http://www.yorku.ca/yul/gazette
+    scopeType: "prefix"
+    exclude:
+      - yorku.ca/yul/gazette/past/archive/\d\d\d\d/\d\d\d\d\d\d/past.*
+  - url: https://www.yorku.ca/ascend
+    scopeType: "prefix"
+  - url: https://rights.info.yorku.ca
+    scopeType: "host"
+    exclude:
+      - rights.info.yorku.ca/calendar.*
+  - url: https://www.yorku.ca/research
+    scopeType: "prefix"
+  - url: https://futurestudents.yorku.ca
+    scopeType: "host"
+  - url: https://www.yorku.ca/study
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/campuses
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/global-engagement
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/about
+    scopeType: "prefix"
+  - url: http://www.yfs.ca
+    scopeType: "host"
+  - url: https://www.yorku.ca/laps
+    scopeType: "prefix"
+  - url: https://registrar.yorku.ca
+    scopeType: "host"
+  - url: https://www.yorku.ca/colleges
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/science
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/health
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/edu
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/gradstudies
+    scopeType: "prefix"
+  - url: https://ampd.yorku.ca
+    scopeType: "host"
+  - url: https://euc.yorku.ca
+    scopeType: "host"
+  - url: https://www.yorku.ca/glendon
+    scopeType: "prefix"
+  - url: https://lassonde.yorku.ca
+    scopeType: "host"
+  - url: https://osgoode.yorku.ca
+    scopeType: "host"
+  - url: https://schulich.yorku.ca
+    scopeType: "host"
+  - url: https://www.yorku.ca/secretariat
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/president
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/unit/general-counsel
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/unit/ombuds
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/unit/cpa
+    scopeType: "prefix"
+  - url: https://agyu.art
+    scopeType: "host"
+
+warcinfo:
+  operator: York University Libraries
+  hostname: library.yorku.ca

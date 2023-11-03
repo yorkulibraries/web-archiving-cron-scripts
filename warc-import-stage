@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source_dir="/mnt/omega/web-archives/crawls"
 dest_dir="/mnt/omega/web-archives/import"

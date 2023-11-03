@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DATE=$(date +"%Y_%m_%d")
 URL="https://omega.library.yorku.ca:8983/engine/job/magazine"
