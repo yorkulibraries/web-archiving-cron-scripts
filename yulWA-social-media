@@ -5,7 +5,7 @@ LOG_FILE="/var/log/heritrix/yu-social-media-browsertrix.log"
 CRAWL_CONFIG="/opt/web-archiving-cron-scripts/crawl-configs/yu-social-media.yaml"
 CRAWL_DIR="/mnt/omega/web-archives/browsertrix"
 COLLECTION_NAME="yu-social-media"
-WORKERS=12
+WORKERS=8
 
 function start_crawl {
     cd "$CRAWL_DIR"
