@@ -1,0 +1,15 @@
+seeds:
+  - url: http://calendars.registrar.yorku.ca 
+    scopeType: "host"
+  - url: https://www.yorku.ca/gradstudies/students/current-students/regulations/program-requirements
+    scopeType: "prefix"
+  - url: https://calendars.students.yorku.ca/academic-calendar
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/gradstudies/academiccalendar-2023-2024
+    scopeType: "prefix"
+  - url: https://www.yorku.ca/gradstudies/academiccalendar
+    scopeType: "prefix"
+
+warcinfo:
+  operator: York University Libraries
+  hostname: library.yorku.ca
