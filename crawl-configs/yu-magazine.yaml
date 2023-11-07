@@ -1,0 +1,9 @@
+seeds:
+  - url: https://magazine.yorku.ca
+    scopeType: "host"
+  - url: https://www.yorku.ca/unit/cpa/the-magazine
+    scopeType: "prefix"
+
+warcinfo:
+  operator: York University Libraries
+  hostname: library.yorku.ca
