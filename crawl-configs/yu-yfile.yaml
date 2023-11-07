@@ -1,0 +1,7 @@
+seeds:
+  - url: http://yfile.news.yorku.ca
+    scopeType: "host"
+
+warcinfo:
+  operator: York University Libraries
+  hostname: library.yorku.ca
