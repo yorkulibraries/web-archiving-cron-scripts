@@ -1,25 +1,30 @@
 #!/usr/bin/env bash
 
-DATE=$(date +"%Y_%m_%d")
-URL="https://omega.library.yorku.ca:8983/engine/job/library.yorku.ca"
-LOG_FILE="/var/log/heritrix/library.yorku.ca.log"
-
-source credentials.env
+DATE=$(date +"%Y%m%d")
+LOG_FILE="/var/log/heritrix/yu-yul-browsertrix.log"
+CRAWL_CONFIG="/opt/web-archiving-cron-scripts/crawl-configs/yu-yul.yaml"
+CRAWL_DIR="/mnt/omega/web-archives/browsertrix"
+COLLECTION_NAME="yu-yul"
+WORKERS=8
 
 function start_crawl {
-    local action="$1"
-    /usr/bin/curl --silent -d "action=$action" -k -u "$USERNAME:$PASSWORD" --anyauth --location "$URL"
+    cd "$CRAWL_DIR"
+    docker run -v "$CRAWL_CONFIG:/app/crawl-config.yaml" -v "$CRAWL_DIR:/crawls" -it webrecorder/browsertrix-crawler:0.12.0-beta.2 crawl --config /app/crawl-config.yaml --collection "$COLLECTION_NAME" --allowHashUrls --workers "$WORKERS" --saveState always --statsFilename "$COLLECTION_NAME-stats-$DATE.json" "+YorkUniversityLibrariesCrawlerBot, diginit@yorku.ca"
+
     if [ $? -eq 0 ]; then
-        echo "[INFO] $(date) - $action started" >> "$LOG_FILE"
+        echo "[INFO] $(date) - started" >> "$LOG_FILE"
     else
-        echo "[ERROR] $(date) - $action" >> "$LOG_FILE"
+        echo "[ERROR] $(date)" >> "$LOG_FILE"
     fi
 }
 
-start_crawl "teardown"
-sleep 10
-start_crawl "build"
-sleep 10
-start_crawl "launch"
-sleep 10
-start_crawl "unpause"
+function stage_warcs {
+    cd "$CRAWL_DIR/collections/$COLLECTION_NAME/archive"
+    rename -v 's/rec-/YORK-LIBRARIES-rec-/g' *.warc.gz
+    echo "[INFO] $(date) - renamed files" >> "$LOG_FILE"
+    mv -v *.warc.gz /mnt/omega/web-archives/import
+    echo "[INFO] $(date) - staged files" >> "$LOG_FILE"
+}
+
+start_crawl
+stage_warcs

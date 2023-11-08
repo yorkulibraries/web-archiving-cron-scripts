@@ -1,0 +1,27 @@
+seeds:
+  - url: http://library.yorku.ca
+    scopeType: "host"
+  - url: https://www.library.yorku.ca/web
+    scopeType: "prefix"
+  - url: https://researchguides.library.yorku.ca
+    scopeType: "host"
+  - url: https://www.library.yorku.ca/ds
+    scopeType: "prefix"
+  - url: https://spark.library.yorku.ca
+    scopeType: "host"
+  - url: https://www.youtube.com/user/yorkulibraries/videos
+    scopeType: "prefix"
+  - url: https://twitter.com/yorkulibraries
+    scopeType: "prefix"
+  - url: https://www.instagram.com/yorkulibraries
+    scopeType: "prefix"
+  - url: https://www.facebook.com/YorkUniversityLibraries
+    scopeType: "prefix"
+  - url: https://learningcommons.yorku.ca
+    scopeType: "host"
+  - url: https://edib.library.yorku.ca
+    scopeType: "host"
+
+warcinfo:
+  operator: York University Libraries
+  hostname: library.yorku.ca
