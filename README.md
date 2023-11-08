@@ -2,7 +2,7 @@
 
 ### Description
 
-This is a collection of shell scripts to capture, preserve, and replay York University and Government of Canada websites using [Heritrix](https://github.com/internetarchive/heritrix3), [Browsertrix Crawler](https://github.com/webrecorder/browsertrix-crawler), and [pywb](https://github.com/webrecorder/pywb).
+This is a collection of shell scripts to capture, preserve, and replay York University and Government of Canada websites using [Browsertrix Crawler](https://github.com/webrecorder/browsertrix-crawler) and [pywb](https://github.com/webrecorder/pywb).
 
 ## Usage
 
