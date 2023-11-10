@@ -21,7 +21,9 @@ function start_crawl {
 function stage_warcs {
     cd "$CRAWL_DIR/collections/$COLLECTION_NAME/archive"
     rename -v 's/rec-/YU-SOCIAL-MEDIA-rec-/g' *.warc.gz
+    echo "[INFO] $(date) - renamed files" >> "$LOG_FILE"
     mv -v *.warc.gz /mnt/omega/web-archives/import
+    echo "[INFO] $(date) - staged files" >> "$LOG_FILE"
 }
 
 start_crawl

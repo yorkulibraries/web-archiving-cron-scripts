@@ -9,6 +9,8 @@ seeds:
     scopeType: "host"
   - url: https://community.info.yorku.ca/
     scopeType: "host"
+    exclude:
+      - community.info.yorku.ca/calendar.*
   - url: https://eclass.yorku.ca/
     scopeType: "host"
   - url: https://events.yorku.ca/
