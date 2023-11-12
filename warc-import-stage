@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-source_dir="/mnt/omega/web-archives/crawls"
-dest_dir="/mnt/omega/web-archives/import"
-
-# Find and move WARCs
-find "$source_dir" -type f -iname "*.warc.gz" -exec mv -v {} "$dest_dir" \;

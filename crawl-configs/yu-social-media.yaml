@@ -161,6 +161,8 @@ seeds:
     scopeType: "prefix"
   - url: https://yorkinternational.yorku.ca/
     scopeType: "host"
+    exclude:
+      - yorkinternational.yorku.ca/calendar.*
   - url: https://yorkulions.ca/
     scopeType: "host"
   - url: https://yuexperience.info.yorku.ca/
