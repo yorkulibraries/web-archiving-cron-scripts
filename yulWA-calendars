@@ -9,7 +9,7 @@ WORKERS=6
 
 function start_crawl {
     cd "$CRAWL_DIR"
-    /usr/bin/docker run -v "$CRAWL_CONFIG:/app/crawl-config.yaml" -v "$CRAWL_DIR:/crawls" webrecorder/browsertrix-crawler:0.12.0-beta.2 crawl --config /app/crawl-config.yaml --collection "$COLLECTION_NAME" --allowHashUrls --workers "$WORKERS" --saveState always --statsFilename "$COLLECTION_NAME-stats-$DATE.json" "+YorkUniversityLibrariesCrawlerBot, diginit@yorku.ca" > "$LOG_FILE" 2>&1
+    /usr/bin/docker run -v "$CRAWL_CONFIG:/app/crawl-config.yaml" -v "$CRAWL_DIR:/crawls" webrecorder/browsertrix-crawler:0.12.3 crawl --config /app/crawl-config.yaml --collection "$COLLECTION_NAME" --allowHashUrls --workers "$WORKERS" --saveState always --statsFilename "$COLLECTION_NAME-stats-$DATE.json" "+YorkUniversityLibrariesCrawlerBot, diginit@yorku.ca" > "$LOG_FILE" 2>&1
 
     if [ $? -eq 0 ]; then
         echo "[INFO] $(date) - started" >> "$LOG_FILE"
