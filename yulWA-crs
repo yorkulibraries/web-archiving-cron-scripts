@@ -5,11 +5,12 @@ LOG_FILE="/var/log/heritrix/yu-crs-browsertrix.log"
 CRAWL_CONFIG="/opt/web-archiving-cron-scripts/crawl-configs/yu-crs.yaml"
 CRAWL_DIR="/mnt/omega/web-archives/browsertrix"
 COLLECTION_NAME="yu-crs"
-WORKERS=18
+WORKERS=10
+VERSION="0.12.4"
 
 function start_crawl {
     cd "$CRAWL_DIR"
-    /usr/bin/docker run -v "$CRAWL_CONFIG:/app/crawl-config.yaml" -v "$CRAWL_DIR:/crawls" webrecorder/browsertrix-crawler:0.12.3 crawl --config /app/crawl-config.yaml --collection "$COLLECTION_NAME" --allowHashUrls --workers "$WORKERS" --saveState always --statsFilename "$COLLECTION_NAME-stats-$DATE.json" "+YorkUniversityLibrariesCrawlerBot, diginit@yorku.ca" > "$LOG_FILE" 2>&1
+    /usr/bin/docker run -v "$CRAWL_CONFIG:/app/crawl-config.yaml" -v "$CRAWL_DIR:/crawls" webrecorder/browsertrix-crawler:"$VERSION" crawl --config /app/crawl-config.yaml --collection "$COLLECTION_NAME" --allowHashUrls --workers "$WORKERS" --saveState always --statsFilename "$COLLECTION_NAME-stats-$DATE.json" "+YorkUniversityLibrariesCrawlerBot, diginit@yorku.ca" > "$LOG_FILE" 2>&1
 
     if [ $? -eq 0 ]; then
         echo "[INFO] $(date) - started" >> "$LOG_FILE"
