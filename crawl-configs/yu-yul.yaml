@@ -1,26 +1,59 @@
 seeds:
   - url: http://library.yorku.ca
     scopeType: "host"
+    exclude:
+      - facebook.com/*
+      - instagram.com/*
   - url: https://www.library.yorku.ca/web
     scopeType: "prefix"
+    exclude:
+      - facebook.com/*
+      - instagram.com/*
   - url: https://researchguides.library.yorku.ca
     scopeType: "host"
+    exclude:
+      - facebook.com/*
+      - instagram.com/*
   - url: https://www.library.yorku.ca/ds
     scopeType: "prefix"
+    exclude:
+      - facebook.com/*
+      - instagram.com/*
   - url: https://spark.library.yorku.ca
     scopeType: "host"
+    exclude:
+      - facebook.com/*
+      - instagram.com/*
   - url: https://www.youtube.com/user/yorkulibraries/videos
     scopeType: "prefix"
+    exclude:
+      - facebook.com/*
+      - instagram.com/*
   - url: https://twitter.com/yorkulibraries
     scopeType: "prefix"
+    exclude:
+      - facebook.com/*
+      - instagram.com/*
   - url: https://www.instagram.com/yorkulibraries
     scopeType: "prefix"
+    exclude:
+      - facebook.com/*
+      - instagram.com/*
   - url: https://www.facebook.com/YorkUniversityLibraries
     scopeType: "prefix"
+    exclude:
+      - facebook.com/*
+      - instagram.com/*
   - url: https://learningcommons.yorku.ca
     scopeType: "host"
+    exclude:
+      - facebook.com/*
+      - instagram.com/*
   - url: https://edib.library.yorku.ca
     scopeType: "host"
+    exclude:
+      - facebook.com/*
+      - instagram.com/*
 
 warcinfo:
   operator: York University Libraries

@@ -1,0 +1,7 @@
+seeds:
+  - url: https://c-cave.com 
+    scopeType: "host"
+
+warcinfo:
+  operator: York University Libraries
+  hostname: library.yorku.ca
