@@ -4,14 +4,14 @@ import_collection_and_delete_files() {
     local collection_name="$1"
     local file_pattern="$2"
     
-    local files=($(shopt -s nullglob dotglob; find /mnt/omega/web-archives/import -path "/mnt/omega/web-archives/import/lost+found" -prune -iname "$file_pattern"))
+    local files=($(shopt -s nullglob dotglob; find /mnt/omega/web-archives/import -path "/mnt/omega/web-archives/import/lost\+found" -prune -o -iname "$file_pattern" -print))
     if (( ${#files[@]} )); then
         cd /mnt/omega/web-archives
 	for file in "${files[@]}"; do
           wb-manager add "$collection_name" "$file"
 	done
 	for file in "${files[@]}"; do
-	  rm "file"
+	  rm "$file"
 	done
     fi
 }
