@@ -54,7 +54,12 @@ seeds:
     exclude:
       - facebook.com/*
       - instagram.com/*
-
+  - url: https://ctasc.blog.yorku.ca
+    scopeType: "host"
+    exclude:
+      - facebook.com/*
+      - instagram.com/*
+        
 warcinfo:
   operator: York University Libraries
   hostname: library.yorku.ca

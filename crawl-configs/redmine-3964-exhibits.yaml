@@ -1,0 +1,15 @@
+seeds:
+  - url: https://www.library.yorku.ca/binaries/ArchivesSpecialCollections/Grossman_Page/GROSSMANmainpage.htm
+    scopeType: "prefix"
+  - url: https://www.library.yorku.ca/binaries/ArchivesSpecialCollections/Voaden/website/hvindex.htm
+    scopeType: "prefix"
+  - url: https://www.library.yorku.ca/binaries/ArchivesSpecialCollections/Yorkville/i_heard_a_story_about_yorkville.htm
+    scopeType: "prefix"
+  - url: https://www.library.yorku.ca/binaries/ArchivesSpecialCollections/Robbie%20Robertson/clara_thomas_archives_celebrates.htm
+    scopeType: "prefix"
+  - url: https://www.library.yorku.ca/binaries/ArchivesSpecialCollections/TTC_photo_gallery/TTCIntro.htm
+    scopeType: "prefix"
+
+warcinfo:
+  operator: York University Libraries
+  hostname: library.yorku.ca
