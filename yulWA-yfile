@@ -6,10 +6,10 @@ CRAWL_CONFIG="/opt/web-archiving-cron-scripts/crawl-configs/yu-yfile.yaml"
 CRAWL_DIR="/mnt/omega/web-archives/browsertrix"
 COLLECTION_NAME="yu-yfile"
 WORKERS=8
-VERSION="0.12.4"
+VERSION="1.1.0-beta.5"
 
 function start_crawl {
-    cd "$CRAWL_DIR"
+    cd "$CRAWL_DIR" || exit
     /usr/bin/docker run -v "$CRAWL_CONFIG:/app/crawl-config.yaml" -v "$CRAWL_DIR:/crawls" webrecorder/browsertrix-crawler:"$VERSION" crawl --config /app/crawl-config.yaml --collection "$COLLECTION_NAME" --allowHashUrls --workers "$WORKERS" --saveState always --statsFilename "$COLLECTION_NAME-stats-$DATE.json" "+YorkUniversityLibrariesCrawlerBot, diginit@yorku.ca" > "$LOG_FILE" 2>&1
 
     if [ $? -eq 0 ]; then
@@ -20,10 +20,10 @@ function start_crawl {
 }
 
 function stage_warcs {
-    cd "$CRAWL_DIR/collections/$COLLECTION_NAME/archive"
-    rename -v 's/rec-/YU-YFILE-rec-/g' *.warc.gz
+    cd "$CRAWL_DIR/collections/$COLLECTION_NAME/archive" || exit
+    rename -v 's/rec-/YU-YFILE-rec-/g' ./*.warc.gz
     echo "[INFO] $(date) - renamed files" >> "$LOG_FILE"
-    mv -v *.warc.gz /mnt/omega/web-archives/import
+    mv -v ./*.warc.gz /mnt/omega/web-archives/import
     echo "[INFO] $(date) - staged files" >> "$LOG_FILE"
 }
 

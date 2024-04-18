@@ -6,7 +6,7 @@ import_collection_and_delete_files() {
     
     local files=($(shopt -s nullglob dotglob; find /mnt/omega/web-archives/import -path "/mnt/omega/web-archives/import/lost\+found" -prune -o -iname "$file_pattern" -print))
     if (( ${#files[@]} )); then
-        cd /mnt/omega/web-archives
+        cd /mnt/omega/web-archives || exit
 	for file in "${files[@]}"; do
           wb-manager add "$collection_name" "$file"
 	done
@@ -17,7 +17,7 @@ import_collection_and_delete_files() {
 }
 
 # Activate Python virtual env.
-cd /opt
+cd /opt || exit
 python3 -m venv pywbenv
 source pywbenv/bin/activate
 
