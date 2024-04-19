@@ -4,17 +4,17 @@ seeds:
   - url: http://linkedin.com/groups/48984
     scopeType: "prefix"
   - url: https://ancillary.info.yorku.ca/
-    scopeType: "host"
+    scopeType: "prefix"
   - url: https://atlas.yorku.ca/
-    scopeType: "host"
+    scopeType: "prefix"
   - url: https://community.info.yorku.ca/
-    scopeType: "host"
+    scopeType: "prefix"
     exclude:
       - community.info.yorku.ca/calendar.*
   - url: https://eclass.yorku.ca/
-    scopeType: "host"
+    scopeType: "prefix"
   - url: https://events.yorku.ca/
-    scopeType: "host"
+    scopeType: "prefix"
   - url: https://futurestudents.yorku.ca/program-search/
     scopeType: "prefix"
   - url: https://futurestudents.yorku.ca/requirements/apply
@@ -24,13 +24,13 @@ seeds:
   - url: https://podcasts.apple.com/us/podcast/schulich-startups-podcast/id1457717831
     scopeType: "prefix"
   - url: https://research.info.yorku.ca/
-    scopeType: "host"
+    scopeType: "prefix"
   - url: https://sfs.yorku.ca/
-    scopeType: "host"
+    scopeType: "prefix"
   - url: https://studentclubs.scld.yorku.ca/
-    scopeType: "host"
+    scopeType: "prefix"
   - url: https://teachingandlearning.yorku.ca/
-    scopeType: "host"
+    scopeType: "prefix"
   - url: https://teachingandlearning.yorku.ca/world-leading-professors/
     scopeType: "prefix"
   - url: https://twitter.com/Continue_YorkU
@@ -160,13 +160,13 @@ seeds:
   - url: https://www.youtube.com/user/YorkUniversity
     scopeType: "prefix"
   - url: https://yorkinternational.yorku.ca/
-    scopeType: "host"
+    scopeType: "prefix"
     exclude:
       - yorkinternational.yorku.ca/calendar.*
   - url: https://yorkulions.ca/
     scopeType: "host"
   - url: https://yuexperience.info.yorku.ca/
-    scopeType: "host"
+    scopeType: "prefix"
   - url: http://twitter.com/Bronfmanlibrary
     scopeType: "prefix"
   - url: http://twitter.com/GlendonCampus

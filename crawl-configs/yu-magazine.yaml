@@ -1,6 +1,6 @@
 seeds:
   - url: https://magazine.yorku.ca
-    scopeType: "host"
+    scopeType: "prefix"
   - url: https://www.yorku.ca/unit/cpa/the-magazine
     scopeType: "prefix"
 

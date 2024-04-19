@@ -6,7 +6,7 @@ CRAWL_CONFIG="/opt/web-archiving-cron-scripts/crawl-configs/yu-social-media.yaml
 CRAWL_DIR="/mnt/omega/web-archives/browsertrix"
 COLLECTION_NAME="yu-social-media"
 WORKERS=10
-VERSION="1.1.0-beta.5"
+VERSION="1.1.0"
 
 function start_crawl {
     cd "$CRAWL_DIR" || exit

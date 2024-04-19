@@ -1,6 +1,6 @@
 seeds:
   - url: http://calendars.registrar.yorku.ca 
-    scopeType: "host"
+    scopeType: "prefix"
   - url: https://www.yorku.ca/gradstudies/students/current-students/regulations/program-requirements
     scopeType: "prefix"
   - url: https://calendars.students.yorku.ca/academic-calendar

@@ -10,7 +10,7 @@ seeds:
       - facebook.com/*
       - instagram.com/*
   - url: https://researchguides.library.yorku.ca
-    scopeType: "host"
+    scopeType: "prefix"
     exclude:
       - facebook.com/*
       - instagram.com/*
@@ -20,7 +20,7 @@ seeds:
       - facebook.com/*
       - instagram.com/*
   - url: https://spark.library.yorku.ca
-    scopeType: "host"
+    scopeType: "prefix"
     exclude:
       - facebook.com/*
       - instagram.com/*
@@ -45,17 +45,17 @@ seeds:
       - facebook.com/*
       - instagram.com/*
   - url: https://learningcommons.yorku.ca
-    scopeType: "host"
+    scopeType: "prefix"
     exclude:
       - facebook.com/*
       - instagram.com/*
   - url: https://edib.library.yorku.ca
-    scopeType: "host"
+    scopeType: "prefix"
     exclude:
       - facebook.com/*
       - instagram.com/*
   - url: https://ctasc.blog.yorku.ca
-    scopeType: "host"
+    scopeType: "prefix"
     exclude:
       - facebook.com/*
       - instagram.com/*
