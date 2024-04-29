@@ -29,3 +29,5 @@ function stage_warcs {
 
 start_crawl
 stage_warcs
+
+docker container prune -f

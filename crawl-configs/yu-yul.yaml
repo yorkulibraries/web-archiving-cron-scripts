@@ -1,9 +1,11 @@
 seeds:
   - url: http://library.yorku.ca
-    scopeType: "host"
+    scopeType: "prefix"
     exclude:
       - facebook.com/*
       - instagram.com/*
+      - www.library.yorku.ca/rooms/*
+      - library.yorku.ca/rooms/*
   - url: https://www.library.yorku.ca/web
     scopeType: "prefix"
     exclude:
