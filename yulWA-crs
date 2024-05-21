@@ -6,7 +6,7 @@ CRAWL_CONFIG="/opt/web-archiving-cron-scripts/crawl-configs/yu-crs.yaml"
 CRAWL_DIR="/mnt/omega/web-archives/browsertrix"
 COLLECTION_NAME="yu-crs"
 WORKERS=10
-VERSION="1.1.0"
+VERSION="1.1.2"
 
 function start_crawl {
     cd "$CRAWL_DIR" || exit
