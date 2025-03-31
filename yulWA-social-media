@@ -23,7 +23,7 @@ function stage_warcs {
     cd "$CRAWL_DIR/collections/$COLLECTION_NAME/archive" || exit
     rename -v 's/rec-/YU-SOCIAL-MEDIA-rec-/g' ./*.warc.gz
     echo "[INFO] $(date) - renamed files" >> "$LOG_FILE"
-    mv -v ./*.warc.gz /mnt/omega/web-archives/import
+    mv -v ./*.warc.gz /mnt/omega/dedup/input/social-media
     echo "[INFO] $(date) - staged files" >> "$LOG_FILE"
 }
 
