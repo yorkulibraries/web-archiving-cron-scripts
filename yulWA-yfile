@@ -24,10 +24,12 @@ function stage_warcs {
     cd "$CRAWL_DIR/collections/$COLLECTION_NAME/archive" || exit
     mv -v ./*.warc.gz "$DEDUP_DIR/input/yfile"
     echo "[INFO] $(date) - staged files for deduplication" >> "$LOG_FILE"
-    warc dedup  "$DEDUP_DIR/input/yfile" --prefix "yfile-" --keep-index --index-dir "$DEDUP_DIR/index/yfile" --output-dir "$DEDUP_DIR/output/yfile"
+    warc dedup  "$DEDUP_DIR/input/yfile" --prefix "yfile-" -R --keep-index --index-dir "$DEDUP_DIR/index/yfile" --output-dir "$DEDUP_DIR/output/yfile"
     echo "[INFO] $(date) - deduped files" >> "$LOG_FILE"
     mv -v "$DEDUP_DIR/output/yfile"/*.warc.gz "/mnt/omega/web-archives/import"
     echo "[INFO] $(date) - staged files for import" >> "$LOG_FILE"
+    rm -v ./*.warc.gz "$DEDUP_DIR/input/yfile"
+    echo "[INFO] $(date) - removed original files" >> "$LOG_FILE"
 }
 
 start_crawl

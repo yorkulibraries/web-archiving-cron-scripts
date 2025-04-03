@@ -5,6 +5,7 @@ LOG_FILE="/var/log/heritrix/yu-social-media-browsertrix.log"
 CRAWL_CONFIG="/opt/web-archiving-cron-scripts/crawl-configs/yu-social-media.yaml"
 CRAWL_DIR="/mnt/omega/web-archives/browsertrix"
 COLLECTION_NAME="yu-social-media"
+DEDUP_DIR="/mnt/omega/dedup"
 WORKERS=10
 VERSION="1.5.8"
 
@@ -21,10 +22,14 @@ function start_crawl {
 
 function stage_warcs {
     cd "$CRAWL_DIR/collections/$COLLECTION_NAME/archive" || exit
-    rename -v 's/rec-/YU-SOCIAL-MEDIA-rec-/g' ./*.warc.gz
-    echo "[INFO] $(date) - renamed files" >> "$LOG_FILE"
-    mv -v ./*.warc.gz /mnt/omega/dedup/input/social-media
-    echo "[INFO] $(date) - staged files" >> "$LOG_FILE"
+    mv -v ./*.warc.gz "$DEDUP_DIR/input/social-media"
+    echo "[INFO] $(date) - staged files for deduplication" >> "$LOG_FILE"
+    warc dedup  "$DEDUP_DIR/input/social-media" --prefix "social-media-" -R --keep-index --index-dir "$DEDUP_DIR/index/social-media" --output-dir "$DEDUP_DIR/output/social-media"
+    echo "[INFO] $(date) - deduped files" >> "$LOG_FILE"
+    mv -v "$DEDUP_DIR/output/social-media"/*.warc.gz "/mnt/omega/web-archives/import"
+    echo "[INFO] $(date) - staged files for import" >> "$LOG_FILE"
+    rm -v ./*.warc.gz "$DEDUP_DIR/input/social-media"
+    echo "[INFO] $(date) - removed original files" >> "$LOG_FILE"
 }
 
 start_crawl

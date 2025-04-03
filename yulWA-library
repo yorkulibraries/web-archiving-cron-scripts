@@ -5,6 +5,7 @@ LOG_FILE="/var/log/heritrix/yu-yul-browsertrix.log"
 CRAWL_CONFIG="/opt/web-archiving-cron-scripts/crawl-configs/yu-yul.yaml"
 CRAWL_DIR="/mnt/omega/web-archives/browsertrix"
 COLLECTION_NAME="yu-yul"
+DEDUP_DIR="/mnt/omega/dedup"
 WORKERS=8
 VERSION="1.5.8"
 
@@ -21,10 +22,14 @@ function start_crawl {
 
 function stage_warcs {
     cd "$CRAWL_DIR/collections/$COLLECTION_NAME/archive" || exit
-    rename -v 's/rec-/YORK-LIBRARIES-rec-/g' ./*.warc.gz
-    echo "[INFO] $(date) - renamed files" >> "$LOG_FILE"
-    mv -v ./*.warc.gz /mnt/omega/dedup/input/library
-    echo "[INFO] $(date) - staged files" >> "$LOG_FILE"
+    mv -v ./*.warc.gz "$DEDUP_DIR/input/libraries"
+    echo "[INFO] $(date) - staged files for deduplication" >> "$LOG_FILE"
+    warc dedup  "$DEDUP_DIR/input/libraries" --prefix "libraries-" -R --keep-index --index-dir "$DEDUP_DIR/index/libraries" --output-dir "$DEDUP_DIR/output/libraries"
+    echo "[INFO] $(date) - deduped files" >> "$LOG_FILE"
+    mv -v "$DEDUP_DIR/output/libraries"/*.warc.gz "/mnt/omega/web-archives/import"
+    echo "[INFO] $(date) - staged files for import" >> "$LOG_FILE"
+    rm -v ./*.warc.gz "$DEDUP_DIR/input/libraries"
+    echo "[INFO] $(date) - removed original files" >> "$LOG_FILE"
 }
 
 start_crawl

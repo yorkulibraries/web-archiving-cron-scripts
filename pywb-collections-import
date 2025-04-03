@@ -22,11 +22,11 @@ python3 -m venv pywbenv
 source pywbenv/bin/activate
 
 # Import collections and delete related files
-import_collection_and_delete_files "academic-calendars" "YORK-ACADEMIC-CALENDARS*warc.gz"
-import_collection_and_delete_files "yul" "YORK-LIBRARIES*warc.gz"
-import_collection_and_delete_files "yu-crs" "YU-CRS*warc.gz"
-import_collection_and_delete_files "yu-magazine" "YU-MAGAZINE*warc.gz"
+import_collection_and_delete_files "academic-calendars" "calendars*warc.gz"
+import_collection_and_delete_files "yul" "libraries*warc.gz"
+import_collection_and_delete_files "yu-crs" "crs*warc.gz"
+import_collection_and_delete_files "yu-magazine" "magazine*warc.gz"
 import_collection_and_delete_files "yfile" "yfile*warc.gz"
-import_collection_and_delete_files "YU-SOCIAL-MEDIA" "YU-SOCIAL-MEDIA*warc.gz"
+import_collection_and_delete_files "YU-SOCIAL-MEDIA" "social-media*warc.gz"
 import_collection_and_delete_files "exhibits" "redmine-3934-c-cave*warc.gz"
 import_collection_and_delete_files "exhibits" "redmine-3964-exhibits*warc.gz"
