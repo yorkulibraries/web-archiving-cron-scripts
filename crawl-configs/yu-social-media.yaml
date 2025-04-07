@@ -251,6 +251,8 @@ seeds:
     scopeType: "prefix"
   - url: http://www.osgoode.yorku.ca/newsroom/faculty-blog-roll
     scopeType:  "prefix"
+  - url: https://bsky.app/profile/york-university.bsky.social
+    scopeType:  "prefix"
 
 warcinfo:
   operator: York University Libraries

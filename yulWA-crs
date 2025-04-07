@@ -28,7 +28,7 @@ function stage_warcs {
     echo "[INFO] $(date) - deduped files" >> "$LOG_FILE"
     mv -v "$DEDUP_DIR/output/crs"/*.warc.gz "/mnt/omega/web-archives/import"
     echo "[INFO] $(date) - staged files for import" >> "$LOG_FILE"
-    rm -v ./*.warc.gz "$DEDUP_DIR/input/crs"
+    rm -v "$DEDUP_DIR"/input/crs/*.warc.gz
     echo "[INFO] $(date) - removed original files" >> "$LOG_FILE"
 }
 
