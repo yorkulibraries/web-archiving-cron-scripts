@@ -10,7 +10,8 @@ Add to cron.
 
 Ex:
 
-    0 3 * * * bash -c '/path/to/yulWA-yfile'
+    05 09 * * 1 bash -c 'yulWA --name "yfile" --crawl-config "/crawl-configs/yu-yfile.yaml" --crawl-dir "/browsertrix" --dedup-dir "/dedup" --import-dir "/import" --workers 8 --version 1.6.0 > /dev/null 2>&1'
+
 
 ### License
 

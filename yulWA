@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+
+### USAGE
+# ./yulWA --name yu-yfile --crawl-config /path/to/config.yaml --crawl-dir /path/to/crawls --dedup-dir /path/to/dedup --import-dir /path/to/import --workers 8 --version 1.5.8
+###
+
+set -euo pipefail
+trap 'log "ERROR" "Script terminated unexpectedly"; exit 1' ERR
+
+SCRIPT_NAME=$(basename "$0")
+DATE=$(date +"%Y%m%d")
+
+# Default values
+NAME=""
+CRAWL_CONFIG=""
+CRAWL_DIR=""
+DEDUP_DIR=""
+IMPORT_DIR=""
+WORKERS=4
+VERSION="1.5.8"
+
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --name) NAME="$2"; shift ;;
+        --crawl-config) CRAWL_CONFIG="$2"; shift ;;
+        --crawl-dir) CRAWL_DIR="$2"; shift ;;
+        --dedup-dir) DEDUP_DIR="$2"; shift ;;
+        --import-dir) IMPORT_DIR="$2"; shift ;;
+        --workers) WORKERS="$2"; shift ;;
+        --version) VERSION="$2"; shift ;;
+        *) echo "Unknown parameter: $1"; exit 1 ;;
+    esac
+    shift
+done
+
+if [[ -z "$NAME" || -z "$CRAWL_CONFIG" || -z "$CRAWL_DIR" || -z "$DEDUP_DIR" || -z "$IMPORT_DIR" ]]; then
+    echo "Missing required parameters!"
+    echo "Usage: $0 --name <collection> --crawl-config <path> --crawl-dir <path> --dedup-dir <path> --import-dir <path> --workers <num> --version <num>"
+    exit 1
+fi
+
+LOG_FILE="/var/log/heritrix/$NAME-browsertrix.log"
+
+log() {
+    echo "[$(date +'%Y-%m-%d %H:%M:%S')] [$SCRIPT_NAME] [$1] $2" | tee -a "$LOG_FILE"
+}
+
+run_collection() {
+    log "INFO" "Starting crawl for $NAME"
+
+    if ! docker run --rm \
+            -v "$CRAWL_CONFIG:/app/crawl-config.yaml" \
+            -v "$CRAWL_DIR:/crawls" \
+            webrecorder/browsertrix-crawler:"$VERSION" crawl \
+            --config /app/crawl-config.yaml \
+            --collection "$NAME" \
+            --allowHashUrls \
+            --workers "$WORKERS" \
+            --saveState always \
+            --statsFilename "$NAME-stats-$DATE.json" \
+            "+YorkUniversityLibrariesCrawlerBot, diginit@yorku.ca" >> "$LOG_FILE" 2>&1; then
+
+            log "NOTICE" "Crawl failed or was interrupted for $NAME"
+    fi
+
+    log "INFO" "Crawl completed (or skipped error) for $NAME"
+
+    ARCHIVE_DIR="$CRAWL_DIR/collections/$NAME/archive"
+    mv -v "$ARCHIVE_DIR"/*.warc.gz "$DEDUP_DIR/input/$NAME" >> "$LOG_FILE" 2>&1
+
+    warc dedup "$DEDUP_DIR/input/$NAME" --prefix "$NAME-" -R --keep-index --index-dir "$DEDUP_DIR/index/$NAME" --output-dir "$DEDUP_DIR/output/$NAME" --tmp-dir "$DEDUP_DIR/tmp" >> "$LOG_FILE" 2>&1
+    log "INFO" "Finished deduping $NAME"
+
+    mv -v "$DEDUP_DIR/output/$NAME"/*.warc.gz "$IMPORT_DIR/" >> "$LOG_FILE" 2>&1
+    log "INFO" "Staged $NAME for import"
+
+    rm -v "$DEDUP_DIR/input/$NAME"/*.warc.gz
+    log "INFO" "Removed original $NAME files"
+
+    log "INFO" "Finished processing $NAME"
+}
+
+run_collection
+docker container prune -f >> "$LOG_FILE" 2>&1
